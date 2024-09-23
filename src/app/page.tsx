@@ -21,17 +21,10 @@ import {
 } from "~/components/ui/table";
 import { Card, CardContent, CardHeader } from "~/components/ui/card";
 import { Label } from "~/components/ui/label";
-import { Separator } from "~/components/ui/separator";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "~/components/ui/accordion";
 
 export default function HomePage() {
-  const [serviceType, setServiceType] = useState<ServiceType>("airForce");
-  const [dischargeDate, setDischargeDate] = useState("2025-06-17");
+  const [serviceType, setServiceType] = useState<ServiceType>("army");
+  const [dischargeDate, setDischargeDate] = useState("");
   const [result, setResult] = useState<SalaryResult | undefined>(undefined);
 
   useEffect(() => {
@@ -95,20 +88,39 @@ export default function HomePage() {
                 </span>
               </div>
 
-              <p>
-                지금까지 받은 급여:{" "}
-                {result.earnedSalary.toLocaleString("ko-KR")}원
-              </p>
-              <p>
-                앞으로 받을 급여: {result.futureSalary.toLocaleString("ko-KR")}
-                원
-              </p>
+              <div className={"text-sm"}>
+                <p>
+                  지금까지 받은 급여:{" "}
+                  <span className={"font-semibold"}>
+                    {result.earnedSalary.toLocaleString("ko-KR")}원
+                  </span>
+                </p>
+                <p>
+                  앞으로 받을 급여:{" "}
+                  <span className={"font-semibold"}>
+                    {result.futureSalary.toLocaleString("ko-KR")}원
+                  </span>
+                </p>
 
-              <p>납입 원금: {result.totalSavings.toLocaleString("ko-KR")}원</p>
-              <p>
-                적금 이자: {result.savingsInterest.toLocaleString("ko-KR")}원
-              </p>
-              <p>매칭지원금: {result.matchingFund.toLocaleString("ko-KR")}원</p>
+                <p>
+                  납입 원금:{" "}
+                  <span className={"font-semibold"}>
+                    {result.totalSavings.toLocaleString("ko-KR")}원
+                  </span>
+                </p>
+                <p>
+                  적금 이자:{" "}
+                  <span className={"font-semibold"}>
+                    {result.savingsInterest.toLocaleString("ko-KR")}원
+                  </span>
+                </p>
+                <p>
+                  매칭지원금:{" "}
+                  <span className={"font-semibold"}>
+                    {result.matchingFund.toLocaleString("ko-KR")}원
+                  </span>
+                </p>
+              </div>
             </div>
             <Table>
               <TableHeader>
